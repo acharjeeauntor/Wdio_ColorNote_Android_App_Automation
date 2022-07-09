@@ -24,7 +24,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/add-note*.js'
+        './test/**/NotesFunctionality*.js'
     ],
     // Patterns to exclude.
     exclude: [
