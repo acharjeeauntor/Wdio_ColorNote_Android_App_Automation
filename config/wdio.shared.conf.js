@@ -1,31 +1,4 @@
-const path = require("path")
-
 exports.config = {
-    //
-    // ====================
-    // Runner Configuration
-    // ====================
-    //
-    port: 4723,
-    //
-    // ==================
-    // Specify Test Files
-    // ==================
-    // Define which test specs should run. The pattern is relative to the directory
-    // from which `wdio` was called.
-    //
-    // The specs are defined as an array of spec files (optionally using wildcards
-    // that will be expanded). The test for each spec file will be run in a separate
-    // worker process. In order to have a group of spec files run in the same worker
-    // process simply enclose them in an array within the specs array.
-    //
-    // If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
-    // then the current working directory is where your `package.json` resides, so `wdio`
-    // will be called from there.
-    //
-    specs: [
-        './test/**/NotesFunctionality*.js'
-    ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -47,20 +20,6 @@ exports.config = {
     // from the same test should run tests.
     //
     maxInstances: 10,
-    //
-    // If you have trouble getting all important capabilities together, check out the
-    // Sauce Labs platform configurator - a great tool to configure your capabilities:
-    // https://saucelabs.com/platform/platform-configurator
-    //
-    capabilities: [{
-        platformName:"Android",
-        "appium:platformVersion": "6.0.1",
-        "appium:deviceName":"546b6902",
-        "appium:automationName":"UIAutomator2",
-        // "appium:app":path.join(process.cwd(),"./app/android/ApiDemos-debug.apk")
-        "appium:app":path.join(process.cwd(),"./app/ColorNote+Notepad.apk"),
-        "appium:autoGrantPermissions":true
-    }],
     //
     // ===================
     // Test Configurations
@@ -108,14 +67,6 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [['appium',{
-        args:{
-            address:'localhost',
-            port:4723
-        },
-        logPath:'./'
-    }]],
-    
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
