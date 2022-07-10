@@ -1,7 +1,8 @@
+import 'dotenv/config'
 const { config } = require('./wdio.shared.conf');
 
-config.user="auntoracharja_b3cP4p"
-config.key="wN9MffuMhK5WfB5bzTiE"
+config.user=process.env.BROWSERSTACK_USER
+config.key=process.env.BROWSERSTACK_KEY
 
 //
 // ============

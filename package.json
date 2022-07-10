@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bsTest": "npx wdio config/wdio.android.bs.conf.js",
+    "androidTest": "npx wdio config/wdio.android.conf.js"
   },
   "author": "Auntor Acharja",
   "license": "ISC",
   "dependencies": {
     "@wdio/cli": "^7.20.5",
-    "appium": "^2.0.0-beta.40"
+    "appium": "^2.0.0-beta.40",
+    "dotenv": "^16.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.6",
