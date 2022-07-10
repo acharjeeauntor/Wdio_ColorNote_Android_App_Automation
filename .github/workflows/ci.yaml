@@ -1,0 +1,24 @@
+name: Wdio Color Note App Test
+on: [push]
+jobs:
+  Functional Test:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 18.4.0
+        - name: Install dependencies
+          run: npm install
+        - name: Test with BrowserStack
+          run: npm run bsTest
+        - uses: actions/upload-artifact@v1
+          if: always()
+          with:
+            name: Test Report
+            path: allure-report
+          if: failure()
+          with:
+            name: Wdio Appium Log
+            path: wdio-appium.log

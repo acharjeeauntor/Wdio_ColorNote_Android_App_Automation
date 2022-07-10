@@ -17,7 +17,7 @@ describe('Add Notes', () => {
     let titelOfNote = "My Notes"
     let myNotes = "Pathrail\nDelduar\nTangail"
 
-    it('Add a note, save changes & verify done', async () => {
+    it.only('Add a note, save changes & verify done', async () => {
         await homeScreen.clickSkipBtn()
         expect(await homeScreen.isAddNoteDisplayed()).toBeTruthy()
         await homeScreen.clickAddNoteBtn()
@@ -44,10 +44,10 @@ describe('Add Notes', () => {
         await homeScreen.clickAddedNote(titelOfNote)
         await noteScreen.clickMoreIcon()
         await noteScreen.deleteNote()
-        await expect(await homeScreen.getNoteListLocator()).not.toHaveText(titelOfNote)
+        expect(await homeScreen.getNoteListLocator()).not.toHaveText(titelOfNote)
         await navigationDrawer.clickNavIcon()
         await navigationDrawer.clickTrashCan()
-        await expect(await trashCanScreen.getDeletedNoteLocator(titelOfNote)).toBeDisplayed()
+       await expect(await trashCanScreen.getDeletedNoteLocator(titelOfNote)).toBeDisplayed()
 
     })
 
