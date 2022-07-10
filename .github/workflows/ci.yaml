@@ -1,7 +1,7 @@
 name: Wdio Color Note App Test
 on: [push]
 jobs:
-  Functional Test:
+  build:
     runs-on: ubuntu-latest
     steps:
         - name: Checkout
@@ -16,8 +16,8 @@ jobs:
         - uses: actions/upload-artifact@v1
           if: always()
           with:
-           name: Test Report
-           path: allure-report
+            name: Test Report
+            path: allure-report
           # if: failure()
           # with:
           #   name: Wdio Appium Log
