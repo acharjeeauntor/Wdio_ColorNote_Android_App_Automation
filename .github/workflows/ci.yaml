@@ -12,6 +12,9 @@ jobs:
         - name: Install dependencies
           run: npm install
         - name: Test with BrowserStack
+          env:
+            BROWSERSTACK_USER:${{secrets.BROWSERSTACK_USER}}
+            BROWSERSTACK_KEY:${{secrets.BROWSERSTACK_KEY}}
           run: npm run bsTest
         - uses: actions/upload-artifact@v1
           if: always()
