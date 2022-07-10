@@ -11,6 +11,8 @@ jobs:
           node-version: 18.4.0
       - name: Install dependencies
         run: npm install
+      - name: Remove older Allure Report
+        run: npm run clear
       - name: Test with BrowserStack
         env:
           BROWSERSTACK_USER: ${{ secrets.BROWSERSTACK_USER }}
