@@ -1,5 +1,5 @@
-const allure = require('allure-commandline')
-exports.config = {
+import allure from 'allure-commandline'
+export const config = {
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -95,7 +95,7 @@ exports.config = {
     }]],
     onComplete: function() {
         const reportError = new Error('Could not generate Allure report')
-        const generation = allure(['generate', 'allure-results', '--clean'])
+        const generation = allure(['generate', 'allure-results'])
         return new Promise((resolve, reject) => {
             const generationTimeout = setTimeout(
                 () => reject(reportError),

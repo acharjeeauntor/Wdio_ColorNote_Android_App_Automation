@@ -1,5 +1,5 @@
 import 'dotenv/config'
-const { config } = require('./wdio.shared.conf');
+import {config} from './wdio.shared.conf'
 
 config.user=process.env.BROWSERSTACK_USER
 config.key=process.env.BROWSERSTACK_KEY

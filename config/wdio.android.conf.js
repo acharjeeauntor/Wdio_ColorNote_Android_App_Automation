@@ -1,5 +1,5 @@
-const path = require('path');
-const { config } = require('./wdio.shared.conf');
+import path from 'path'
+import {config} from './wdio.shared.conf'
 
 // ====================
 // Runner Configuration
