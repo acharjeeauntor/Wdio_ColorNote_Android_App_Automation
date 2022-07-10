@@ -123,6 +123,7 @@ exports.config = {
         timeout: 60000
     },
     //
+    //
     // =====
     // Hooks
     // =====
@@ -132,7 +133,7 @@ exports.config = {
     // resolved to continue.
     /**
      * Gets executed once before all workers get launched.
-     * @param {Object} config wdio configuration object
+    * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
     // onPrepare: function (config, capabilities) {
