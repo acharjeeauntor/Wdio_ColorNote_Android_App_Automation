@@ -16,9 +16,9 @@ jobs:
         - uses: actions/upload-artifact@v1
           if: always()
           with:
-            name: Test Report
-            path: allure-report
-          if: failure()
-          with:
-            name: Wdio Appium Log
-            path: wdio-appium.log
+           name: Test Report
+           path: allure-report
+          # if: failure()
+          # with:
+          #   name: Wdio Appium Log
+          #   path: wdio-appium.log
