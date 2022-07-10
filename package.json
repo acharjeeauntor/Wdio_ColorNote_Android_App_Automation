@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clear": "if [ -d allure-results ]; then rm -Rf allure-results; fi && if [ -d allure-report ]; then rm -Rf allure-report; fi",
-    "bsTest": "npx wdio config/wdio.android.bs.conf.js",
-    "androidTest": "npm run clear &&  npx wdio config/wdio.android.conf.js"
+    "clearAllure": "if [ -d allure-results ]; then rm -Rf allure-results; fi && if [ -d allure-report ]; then rm -Rf allure-report; fi",
+    "bsTest": "npm run clearAllure && npx wdio config/wdio.android.bs.conf.js",
+    "androidTest": "npm run clearAllure && npx wdio config/wdio.android.conf.js"
   },
   "author": "Auntor Acharja",
   "license": "ISC",
