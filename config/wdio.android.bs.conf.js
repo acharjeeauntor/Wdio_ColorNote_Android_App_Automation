@@ -9,7 +9,7 @@ config.key=process.env.BROWSERSTACK_KEY
 // Specs
 // ============
 config.specs = [
-  './test/**/NotesFunctionality*.js'
+  './src/test/**/NotesFunctionality*.js'
 ];
 
 //
@@ -22,7 +22,6 @@ config.capabilities = [
         "appium:platformVersion": "8.0",
         "appium:deviceName":"Samsung Galaxy S9",
         "appium:automationName":"UIAutomator2",
-        // "appium:app":path.join(process.cwd(),"./app/android/ApiDemos-debug.apk")
         "appium:app":"bs://840368d7255778a423468588d13e852c6370fbfe",
         "appium:autoGrantPermissions":true
     }

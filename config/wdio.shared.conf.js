@@ -28,7 +28,7 @@ export const config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -88,10 +88,10 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['allure', {
+    reporters: ['spec',['allure', {
         outputDir: 'allure-results',
-        // disableWebdriverStepsReporting: true,
-        // disableWebdriverScreenshotsReporting: true,
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
     }]],
     onComplete: function() {
         const reportError = new Error('Could not generate Allure report')

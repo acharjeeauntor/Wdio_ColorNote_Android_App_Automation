@@ -21,8 +21,8 @@ jobs:
         with:
           name: Test Report
           path: allure-report
-      - uses: actions/upload-artifact@v2    
-        if: failure()
-        with:
-          name: Wdio Appium Log
-          path: wdio-appium.log
+      # - uses: actions/upload-artifact@v2    
+      #   if: failure()
+      #   with:
+      #     name: Wdio Appium Log
+      #     path: wdio-appium.log

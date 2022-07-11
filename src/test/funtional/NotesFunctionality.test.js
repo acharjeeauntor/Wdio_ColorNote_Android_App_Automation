@@ -27,12 +27,12 @@ describe('Add Note', () => {
         await screenActions.pressBackBtn()
 
         expect(await noteScreen.getEditIconLocator()).toBeDisplayed()
-
-        //await expect($('//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/edit_btn"]')).toBeDisplayed()
         expect(await noteScreen.getViewNotesLocator()).toHaveText(NoteData.myNotes)
         await screenActions.pressBackBtn()
-        expect(await homeScreen.getAddedNoteLocator(NoteData.titleOfNote)).toBeDisplayed()
 
+        let noteLocator = await homeScreen.getAddedNoteLocator(NoteData.titleOfNote)
+        await noteLocator.waitForDisplayed()
+        expect(noteLocator).toBeDisplayed()
     })
 
 
