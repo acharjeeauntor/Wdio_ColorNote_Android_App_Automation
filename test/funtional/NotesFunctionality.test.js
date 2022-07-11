@@ -14,7 +14,7 @@ let trashCanScreen = new TrashCanScreen()
 let screenActions = new ScreenActions()
 
 describe('Add Note', () => {
-    it('Add a note, save changes & verify done', async () => {
+    it.only('Add a note, save changes & verify done', async () => {
         await homeScreen.clickSkipBtn()
         expect(await homeScreen.isAddNoteDisplayed()).toBeTruthy()
         await homeScreen.clickAddNoteBtn()
