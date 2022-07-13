@@ -12,8 +12,15 @@ config.port = 4723;
 // Specs
 // ============
 config.specs = [
-  './src/test/**/NotesFunctionality*.js'
+  './src/test/NotesFunctionality*.js',
 ];
+
+// config.suites={
+//   login: [
+
+// ]
+// }
+
 
 //
 // ============

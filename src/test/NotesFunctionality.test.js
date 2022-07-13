@@ -1,10 +1,10 @@
 /* eslint-disable wdio/await-expect */
-import { HomeScreen } from "../../screenFactory/screenRepository/HomeScreen"
-import { NoteScreen } from "../../screenFactory/screenRepository/NoteScreen"
-import { NavigationDrawer } from "../../screenFactory/screenRepository/NavigationDrawer"
-import { TrashCanScreen } from "../../screenFactory/screenRepository/TrashCanScreen"
-import { ScreenActions } from "../../lib/ScreenActions"
-import NoteData from "../../test-data/notesData.json"
+import { HomeScreen } from "../screenFactory/screenRepository/HomeScreen"
+import { NoteScreen } from "../screenFactory/screenRepository/NoteScreen.js"
+import { NavigationDrawer } from "../screenFactory/screenRepository/NavigationDrawer.js"
+import { TrashCanScreen } from "../screenFactory/screenRepository/TrashCanScreen.js"
+import { ScreenActions } from "../lib/ScreenActions"
+import NoteData from "../test-data/NotesData.json"
 import allureReporter from '@wdio/allure-reporter'
 
 let homeScreen = new HomeScreen()
@@ -21,7 +21,7 @@ describe('Add Note', () => {
         await homeScreen.clickAddNoteBtn()
         await homeScreen.clickTextPopup()
         expect(await noteScreen.isEditingTextDisplayed()).toBeTruthy()
-        await noteScreen.enterNoteTitle('ffggb')
+        await noteScreen.enterNoteTitle(NoteData.titleOfNote)
         await noteScreen.enterNotes(NoteData.myNotes)
 
         await screenActions.pressBackBtn()
@@ -49,5 +49,3 @@ describe('Add Note', () => {
 
     })
 });
-
-

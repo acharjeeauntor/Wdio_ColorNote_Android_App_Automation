@@ -1,1 +1,0 @@
-{"b90bdecb133d99519c15b5f2b986d757":{"statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1},"items":[{"uid":"e1608449b551eb12","status":"broken","statusDetails":"element (\"//*[@text=\"My Note\"]\") still not displayed after 10000ms","time":{"start":1657714906405,"stop":1657714957149,"duration":50744}}]}}
