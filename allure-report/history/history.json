@@ -1,1 +1,1 @@
-{"829d415fb4ce4991d8386360668f8caf":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"c64521514b52888","status":"passed","time":{"start":1657541480159,"stop":1657541496684,"duration":16525}}]}}
+{"b90bdecb133d99519c15b5f2b986d757":{"statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1},"items":[{"uid":"e1608449b551eb12","status":"broken","statusDetails":"element (\"//*[@text=\"My Note\"]\") still not displayed after 10000ms","time":{"start":1657714906405,"stop":1657714957149,"duration":50744}}]}}

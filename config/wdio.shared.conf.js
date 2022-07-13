@@ -1,9 +1,10 @@
 import allure from 'allure-commandline'
+// import video from 'wdio-video-reporter'
 export const config = {
     // Patterns to exclude.
-    exclude: [
-        // 'path/to/excluded/files'
-    ],
+    // exclude: [
+    //     // 'path/to/excluded/files'
+    // ],
     //
     // ============
     // Capabilities
@@ -52,7 +53,7 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    // baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -77,7 +78,7 @@ export const config = {
     framework: 'mocha',
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
+    specFileRetries: 0,
     //
     // Delay in seconds between the spec file retry attempts
     // specFileRetriesDelay: 0,
@@ -88,12 +89,18 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec',['allure', {
-        outputDir: 'allure-results',
-        disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: false,
-    }]],
-    onComplete: function() {
+    reporters: ['spec',
+        // [video, {
+        //     saveAllVideos: false,       // If true, also saves videos for successful test cases
+        //     videoSlowdownMultiplier: 3,
+        //     outputDir: './test-report'
+        // }],
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }]],
+    onComplete: function () {
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results'])
         return new Promise((resolve, reject) => {
@@ -101,7 +108,7 @@ export const config = {
                 () => reject(reportError),
                 10000)
 
-            generation.on('exit', function(exitCode) {
+            generation.on('exit', function (exitCode) {
                 clearTimeout(generationTimeout)
 
                 if (exitCode !== 0) {
@@ -114,7 +121,7 @@ export const config = {
         })
     },
 
-    
+
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -217,8 +224,12 @@ export const config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    // eslint-disable-next-line no-unused-vars
+    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+            await driver.takeScreenshot();
+        }
+    },
 
 
     /**

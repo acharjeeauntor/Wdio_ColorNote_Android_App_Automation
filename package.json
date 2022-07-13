@@ -14,7 +14,8 @@
     "@wdio/cli": "^7.20.5",
     "allure-commandline": "^2.18.1",
     "appium": "^2.0.0-beta.40",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "wdio-video-reporter": "^3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.6",

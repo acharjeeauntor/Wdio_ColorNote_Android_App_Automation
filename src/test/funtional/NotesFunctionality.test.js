@@ -5,7 +5,7 @@ import { NavigationDrawer } from "../../screenFactory/screenRepository/Navigatio
 import { TrashCanScreen } from "../../screenFactory/screenRepository/TrashCanScreen"
 import { ScreenActions } from "../../lib/ScreenActions"
 import NoteData from "../../test-data/notesData.json"
-
+import allureReporter from '@wdio/allure-reporter'
 
 let homeScreen = new HomeScreen()
 let noteScreen = new NoteScreen()
@@ -15,12 +15,13 @@ let screenActions = new ScreenActions()
 
 describe('Add Note', () => {
     it.only('Add a note, save changes & verify done', async () => {
+        allureReporter.addSeverity('critical')
         await homeScreen.clickSkipBtn()
         expect(await homeScreen.isAddNoteDisplayed()).toBeTruthy()
         await homeScreen.clickAddNoteBtn()
         await homeScreen.clickTextPopup()
         expect(await noteScreen.isEditingTextDisplayed()).toBeTruthy()
-        await noteScreen.enterNoteTitle(NoteData.titleOfNote)
+        await noteScreen.enterNoteTitle('ffggb')
         await noteScreen.enterNotes(NoteData.myNotes)
 
         await screenActions.pressBackBtn()
