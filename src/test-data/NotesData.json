@@ -1,4 +1,11 @@
 {
-    "titleOfNote":"My Note",
-    "myNotes":"Pathrail\nDelduar\nTangail"
+    "firstNote":{
+        "titleOfNote":"My Note",
+        "myNotes":"Pathrail\nDelduar\nTangail"
+    },
+    "secondNote":{
+        "titleOfNote":"Auntor",
+        "myNotes":"Sristy College Of Tangail\nDIU"
+    }
+
 }

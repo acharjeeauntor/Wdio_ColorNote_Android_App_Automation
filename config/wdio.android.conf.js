@@ -13,6 +13,7 @@ config.port = 4723;
 // ============
 config.specs = [
   './src/test/NotesFunctionality*.js',
+  //'./src/test/ChecklistFunctionality*.js',
 ];
 
 // config.suites={
