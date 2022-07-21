@@ -28,10 +28,10 @@ export class NoteScreen {
         return await $(this.Editing_Text_Selector).isDisplayed()
     }
     async getEditIconLocator() {
-        return $(this.Edit_Icon_Selector)
+        return await $(this.Edit_Icon_Selector)
     }
     async getViewNotesLocator() {
-        return $(this.View_Note_Selector)
+        return await $(this.View_Note_Selector)
     }
     async clickMoreIcon() {
         await $(this.More_Icon_Selector).click()
@@ -40,5 +40,6 @@ export class NoteScreen {
         await $(this.Delete_Btn_Selector).click()
         await $(this.Ok_Btn_Selector).click()
     }
+
 
 }

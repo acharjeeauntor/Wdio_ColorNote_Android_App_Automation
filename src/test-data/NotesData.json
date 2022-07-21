@@ -6,6 +6,17 @@
     "secondNote":{
         "titleOfNote":"Auntor",
         "myNotes":"Sristy College Of Tangail\nDIU"
-    }
+    },
+    "popupMsg":"Are you sure you want to move the note to the trash can?",
+    "multipleNote":[
+        {
+            "title":"note-1",
+            "note":"Pathrail\nDelduar\nTangail"
+        },
+        {
+            "title":"note-2",
+            "note":"Sristy College Of Tangail\nDIU"
+        } 
+    ]
 
 }

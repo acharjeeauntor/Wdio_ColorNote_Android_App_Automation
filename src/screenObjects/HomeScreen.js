@@ -1,6 +1,5 @@
-import { CommonUtils } from "../utils/Common.utils"
+/* eslint-disable no-unused-vars */
 
-let commonUtils= new CommonUtils()
 export class HomeScreen {
     AddNote_Text_Selector = `//*[@text='Add note']`
     Skip_Btn_Selector = `//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/btn_start_skip']`
@@ -10,9 +9,9 @@ export class HomeScreen {
     AddNote_Icon_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/main_btn1"]`
     Search_Icon_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/main_btn2"]`
     Search_Input_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/edit_search"]`
-    Title_Card_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/title"]`
+    Note_Title_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/title"]`
     Note_List_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/note_list"]`
-    More_Icon_Selector =`//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/main_btn3"]`
+    More_Icon_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/main_btn3"]`
     Search_Option_Selector = `//*[@text="Search"]`
     Search_Back_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/search_back"]`
 
@@ -31,11 +30,36 @@ export class HomeScreen {
     async clickChecklistPopup() {
         await $(this.Add_Checklist_Popup_Selector).click()
     }
-    async getAddedNoteLocator(titleOfNote) {
-        return $(`//*[@text="${titleOfNote}"]`)
+    async isNoteTitleMatch(AddedNoteTitle) {
+        let elements = await $$(this.Note_Title_Selector)
+        for (var element of elements) {
+            var title = await element.getText()
+            console.log(`::::${title}`)
+            if (title === AddedNoteTitle) {
+                return true
+            } else {
+                console.log("Not Match")
+            }
+        }
     }
+
+
+    async selectAllNotes() {
+        let elements = await $$(this.Note_Title_Selector)
+        for(let element of elements){
+            await element.touchAction([
+                'longPress',
+                'release'
+            ])
+        }
+        
+    }
+
     async clickAddedNote(titleOfNote) {
         await $(`//*[@text="${titleOfNote}"]`).click()
+    }
+    async selectAddedNote(titleOfNote) {
+        await (await $(`//*[@text="${titleOfNote}"]`)).touchAction('longPress')
     }
     async clickAddNoteIcon() {
         await $(this.AddNote_Icon_Selector).click()
@@ -45,12 +69,12 @@ export class HomeScreen {
     }
     async clickSearchIcon() {
         await $(this.Search_Icon_Selector).click()
-        
+
     }
     async enterSearchItem(title) {
-        await (await $(this.Search_Input_Selector)).setValue(title)
+        await $(this.Search_Input_Selector).setValue(title)
     }
-    async getSearchItemTitle(){
+    async getSearchItemTitle() {
         return await $(this.Note_List_Selctor).getText()
     }
     async clickMoreIcon() {
@@ -61,9 +85,6 @@ export class HomeScreen {
     }
     async clickSearchBack() {
         await $(this.Search_Back_Selector).click()
-    }
-    async pressBackBtn(){
-        commonUtils.navigateBack()
     }
 
 

@@ -1,6 +1,6 @@
 /* eslint-disable wdio/await-expect */
-import { HomeScreen } from "../screenObjects/HomeScreen.screen"
-import { NoteScreen } from "../screenObjects/NoteScreen.screen"
+import { HomeScreen } from "../screenObjects/HomeScreen"
+import { NoteScreen } from "../screenObjects/NoteScreen"
 import ChecklistData from "../test-data/ChecklistData.json"
 //import allureReporter from '@wdio/allure-reporter'
 
@@ -8,7 +8,7 @@ let homeScreen = new HomeScreen()
 let noteScreen = new NoteScreen()
 
 
-describe('Add checklist', () => {
+describe('Check Checklist Functionality', () => {
 
     before(async () => {
         await homeScreen.clickSkipBtn()
@@ -41,7 +41,7 @@ describe('Add checklist', () => {
         expect(noteLocator).toBeDisplayed()
     })
 
-    it('search Note', async () => {
+    it('search Checklist', async () => {
         await homeScreen.clickSearchIcon()
         await homeScreen.enterSearchItem(ChecklistData.firstChecklist.title)
         let checklistLocator1 = await homeScreen.getAddedNoteLocator(ChecklistData.firstChecklist.title)
