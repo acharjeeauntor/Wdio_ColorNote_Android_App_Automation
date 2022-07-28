@@ -39,6 +39,8 @@ export class HomeScreen {
                 return true
             } else {
                 console.log("Not Match")
+                return false
+               
             }
         }
     }

@@ -53,20 +53,35 @@ describe('Check Note and checklist Functionality', () => {
     // })
 
 
-    it(`multiple select->Delete->trash can->check list->multi select->Restore->Notes->check list`, async () => {
+    it(`Multiple select->Delete->trash can->check list->multi select->Restore->Notes->check list`, async () => {
         await homeScreen.selectAllNotes()
         await bottomBar.clickDeleteMenu()
         await commonUtils.acceptPopup()
         await navigationDrawer.clickNavIcon()
         await navigationDrawer.clickTrashCan()
+        expect(await trashCanScreen.isTitleMatch(NoteData.firstNote.titleOfNote,ChecklistData.firstChecklist.title)).toBeTruthy()
         await trashCanScreen.selectAllNotes()
         await bottomBar.clickRestoreBtn()
         await navigationDrawer.clickNavIcon()
         await navigationDrawer.clickNotesNavOption()
-        
-
-
+        expect(await homeScreen.isNoteTitleMatch(ChecklistData.firstChecklist.title)).toBeTruthy()
     })
+
+    it(`Single select->Delete->trash can->check list->Single select->Permanently Delete->check list->Notes`, async () => {
+        await homeScreen.selectAddedNote(NoteData.firstNote.titleOfNote)
+        await bottomBar.clickDeleteMenu()
+        await commonUtils.acceptPopup()
+        expect(await homeScreen.isNoteTitleMatch(NoteData.firstNote.titleOfNote)).toBeFalsy()
+        await navigationDrawer.clickNavIcon()
+        await navigationDrawer.clickTrashCan()
+        await trashCanScreen.selectDeletedNote(NoteData.firstNote.titleOfNote)
+        await bottomBar.clickPermanentlyDeleteBtn()
+        await commonUtils.acceptPopup()
+        expect(await trashCanScreen.isNoteExisting(NoteData.firstNote.titleOfNote)).toBeFalsy()
+        await navigationDrawer.clickNavIcon()
+        await navigationDrawer.clickNotesNavOption()
+    })
+
 
 
 

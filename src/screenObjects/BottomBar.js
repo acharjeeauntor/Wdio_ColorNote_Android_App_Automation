@@ -5,6 +5,7 @@ export class BottomBar {
     Reminder_Menu_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/bottom_menu_reminder"]`
     More_Menu_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/bottom_menu_more"]`
    Bottom_Restore_Btn_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/bottom_menu_restore"]`
+   Permanently_Delete_Btn_Selector=`~Permanently delete`
 
 
 
@@ -25,6 +26,9 @@ export class BottomBar {
     }
     async clickRestoreBtn() {
         await $(this.Bottom_Restore_Btn_Selector).click()
+    }
+    async clickPermanentlyDeleteBtn() {
+        await $(this.Permanently_Delete_Btn_Selector).click()
     }
 
 }
