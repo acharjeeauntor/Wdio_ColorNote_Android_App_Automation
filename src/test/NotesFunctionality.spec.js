@@ -82,6 +82,21 @@ describe('Check Note and checklist Functionality', () => {
         await navigationDrawer.clickNotesNavOption()
     })
 
+    it(`Single select->Archive->check list->Archive->Single select->UnArchive->Notes->check list`, async () => {
+        await homeScreen.selectAddedNote(ChecklistData.firstChecklist.title)
+        await bottomBar.clickArchiveMenu()
+        await commonUtils.acceptPopup()
+        expect(await homeScreen.isNoteTitleMatch(ChecklistData.firstChecklist.title)).toBeFalsy()
+        await navigationDrawer.clickNavIcon()
+        await navigationDrawer.clickTrashCan()
+        await trashCanScreen.selectDeletedNote(NoteData.firstNote.titleOfNote)
+        await bottomBar.clickPermanentlyDeleteBtn()
+        await commonUtils.acceptPopup()
+        expect(await trashCanScreen.isNoteExisting(NoteData.firstNote.titleOfNote)).toBeFalsy()
+        await navigationDrawer.clickNavIcon()
+        await navigationDrawer.clickNotesNavOption()
+    })
+
 
 
 

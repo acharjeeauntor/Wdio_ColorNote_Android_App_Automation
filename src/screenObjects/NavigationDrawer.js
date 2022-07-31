@@ -10,6 +10,9 @@ export class NavigationDrawer {
     async clickTrashCan() {
         await $(this.Trash_Text_Selector).click()
     }
+    async clickArchive() {
+        await $(this.Trash_Text_Selector).click()
+    }
     async clickNotesNavOption() {
         await $(this.Notes_Text_Selector).click()
     }
