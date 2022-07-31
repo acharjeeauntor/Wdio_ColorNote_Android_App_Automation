@@ -7,6 +7,9 @@
         "titleOfNote":"Auntor",
         "myNotes":"Sristy College Of Tangail\nDIU"
     },
+    "updatdeNoteTitle":{
+        "title": "Updated Note"
+    },
     "popupMsg":"Are you sure you want to move the note to the trash can?",
     "multipleNote":[
         {

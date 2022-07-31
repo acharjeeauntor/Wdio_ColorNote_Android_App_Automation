@@ -45,6 +45,10 @@ export class HomeScreen {
         }
     }
 
+    async getSearchNoteTitle(){
+        return await (await $(this.Note_Title_Selector)).getText()
+    }
+
 
     async selectAllNotes() {
         let elements = await $$(this.Note_Title_Selector)

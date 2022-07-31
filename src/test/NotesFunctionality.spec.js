@@ -25,7 +25,7 @@ describe('Check Note and checklist Functionality', () => {
         await homeScreen.clickSkipBtn()
     })
 
-    it.only('Add Note->Text->Enter input->check list->+ click->checklist->enter input->check list', async () => {
+    it('Add Note->Text->Enter input->check list->+ click->checklist->enter input->check list', async () => {
         await homeScreen.clickAddNoteBtn()
         await homeScreen.clickTextPopup()
         await noteScreen.enterNoteDetails(NoteData.firstNote.titleOfNote, NoteData.firstNote.myNotes)
@@ -40,20 +40,6 @@ describe('Check Note and checklist Functionality', () => {
         await commonUtils.navigateBack()
         expect(await homeScreen.isNoteTitleMatch(ChecklistData.firstChecklist.title)).toBeTruthy()
     })
-
-
-    // it('search Note', async () => {
-    //     await homeScreen.clickSearchIcon()
-    //     await homeScreen.enterSearchItem(NoteData.firstNote.titleOfNote)
-    //     expect(await homeScreen.isNoteTitleMatch(NoteData.firstNote.titleOfNote)).toBeTruthy()
-    //     await homeScreen.clickSearchBack()
-    //     await homeScreen.clickMoreIcon()
-    //     await homeScreen.clickSearchOption()
-    //     await homeScreen.enterSearchItem(ChecklistData.firstChecklist.title)
-    //     expect(await homeScreen.isNoteTitleMatch(ChecklistData.firstChecklist.title)).toBeTruthy()
-    //     await homeScreen.clickSearchBack()
-    // })
-
 
     it(`Multiple select->Delete->trash can->check list->multi select->Restore->Notes->check list`, async () => {
         await homeScreen.selectAllNotes()
@@ -84,7 +70,7 @@ describe('Check Note and checklist Functionality', () => {
         await navigationDrawer.clickNotesNavOption()
     })
 
-    it.only(`Single select->Archive->check list->Archive->Single select->UnArchive->Notes->check list`, async () => {
+    it(`Single select->Archive->check list->Archive->Single select->UnArchive->Notes->check list`, async () => {
         await homeScreen.selectAddedNote(ChecklistData.firstChecklist.title)
         await bottomBar.clickArchiveMenu()
         await commonUtils.acceptPopup()
@@ -98,64 +84,13 @@ describe('Check Note and checklist Functionality', () => {
         expect(await homeScreen.isNoteTitleMatch(ChecklistData.firstChecklist.title)).toBeTruthy()
     })
 
+    it(`Go inside single note->Click edit icon->Update Title->check list`, async () => {
+        await homeScreen.clickAddedNote(ChecklistData.firstChecklist.title)
+        await noteScreen.clickEditIcon()
+        await noteScreen.updateTitle(NoteData.updatdeNoteTitle.title)
+        await commonUtils.navigateBack()
+        await commonUtils.navigateBack()
+        expect(await homeScreen.isNoteTitleMatch(NoteData.updatdeNoteTitle.title)).toBeTruthy()
+    })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // it('Delete a single Note', async () => {
-
-    //     await homeScreen.selectAddedNote(NoteData.firstNote.titleOfNote)
-    //     await bottomBar.clickDeleteMenu()
-    //     expect(await bottomBar.getDeletePopupText()).toBe(NoteData.popupMsg)
-    //     await bottomBar.acceptDeletePopup()
-    //     expect(await homeScreen.getAddedNoteLocator(NoteData.firstNote.titleOfNote)).not.toBeDisplayed()
-    //     await navigationDrawer.clickNavIcon()
-    //     await navigationDrawer.clickTrashCan()
-    //     expect(await trashCanScreen.getDeletedNoteLocator(NoteData.firstNote.titleOfNote)).toBeDisplayed()
-    // })
-
-    // for(var data of NoteData.multipleNote){
-    //     it('Delete multiple Notes', async () => {
-    //         await commonUtils.addNote(data.title,data.note)
-    //         await homeScreen.selectAddedNote(NoteData.firstNote.titleOfNote)
-    //         await bottomBar.clickDeleteMenu()
-    //         expect(await bottomBar.getDeletePopupText()).toBe(NoteData.popupMsg)
-    //         await bottomBar.acceptDeletePopup()
-    //         expect(await homeScreen.getAddedNoteLocator(NoteData.firstNote.titleOfNote)).not.toBeDisplayed()
-    //         await navigationDrawer.clickNavIcon()
-    //         await navigationDrawer.clickTrashCan()
-    //         expect(await trashCanScreen.getDeletedNoteLocator(NoteData.firstNote.titleOfNote)).toBeDisplayed()
-    //     })
-    // }
-
-
-
-
-    // it('Delete a note & Verify the note in trash can ', async () => {
-
-    //     await homeScreen.clickAddedNote(NoteData.titleOfNote)
-    //     await noteScreen.clickMoreIcon()
-    //     await noteScreen.deleteNote()
-    //     expect(await homeScreen.getNoteListLocator()).not.toHaveText(NoteData.titleOfNote)
-    //     await navigationDrawer.clickNavIcon()
-    //     await navigationDrawer.clickTrashCan()
-    //     await expect(await trashCanScreen.getDeletedNoteLocator(NoteData.titleOfNote)).toBeDisplayed()
-
-    // })
 });

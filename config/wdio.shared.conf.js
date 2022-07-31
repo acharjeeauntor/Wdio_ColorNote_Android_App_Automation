@@ -1,4 +1,4 @@
-// import allure from 'allure-commandline'
+import allure from 'allure-commandline'
 // import video from 'wdio-video-reporter'
 export const config = {
     // Patterns to exclude.
@@ -95,32 +95,32 @@ export const config = {
         //     videoSlowdownMultiplier: 3,
         //     outputDir: './test-report'
         // }],
-        // ['allure', {
-        //     outputDir: 'allure-results',
-        //     disableWebdriverStepsReporting: true,
-        //     disableWebdriverScreenshotsReporting: false,
-        // }]
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }]
     ],
-    // onComplete: function () {
-    //     const reportError = new Error('Could not generate Allure report')
-    //     const generation = allure(['generate', 'allure-results'])
-    //     return new Promise((resolve, reject) => {
-    //         const generationTimeout = setTimeout(
-    //             () => reject(reportError),
-    //             10000)
+    onComplete: function () {
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', 'allure-results'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                10000)
 
-    //         generation.on('exit', function (exitCode) {
-    //             clearTimeout(generationTimeout)
+            generation.on('exit', function (exitCode) {
+                clearTimeout(generationTimeout)
 
-    //             if (exitCode !== 0) {
-    //                 return reject(reportError)
-    //             }
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
 
-    //             console.log('Allure report successfully generated')
-    //             resolve()
-    //         })
-    //     })
-    // },
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
+    },
 
 
     //

@@ -23,12 +23,18 @@ export class NoteScreen {
         await $(this.Add_Item_Input_Selector).setValue(notes)
        await $(this.Ok_Btn_Selector).click()
     }
+    async updateTitle(newTitle){
+        await $(this.Title_Input_Selector).setValue(newTitle)
+    }
 
     async isEditingTextDisplayed() {
         return await $(this.Editing_Text_Selector).isDisplayed()
     }
     async getEditIconLocator() {
         return await $(this.Edit_Icon_Selector)
+    }
+    async clickEditIcon() {
+        await (await $(this.Edit_Icon_Selector)).click()
     }
     async getViewNotesLocator() {
         return await $(this.View_Note_Selector)
