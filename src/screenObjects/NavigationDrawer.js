@@ -2,6 +2,7 @@ export class NavigationDrawer {
 
     NavDrawer_Icon_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/icon_nav"]`
     Trash_Text_Selector=`//*[@text="Trash Can"]`
+    Archive_Text_Selector=`//*[@text="Archive"]`
     Notes_Text_Selector=`//*[@text="Notes"]`
 
     async clickNavIcon() {
@@ -11,7 +12,7 @@ export class NavigationDrawer {
         await $(this.Trash_Text_Selector).click()
     }
     async clickArchive() {
-        await $(this.Trash_Text_Selector).click()
+        await $(this.Archive_Text_Selector).click()
     }
     async clickNotesNavOption() {
         await $(this.Notes_Text_Selector).click()

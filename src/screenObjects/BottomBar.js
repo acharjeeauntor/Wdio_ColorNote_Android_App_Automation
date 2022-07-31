@@ -1,4 +1,5 @@
 export class BottomBar {
+    UnArchive_Menu_Selector =`~Unarchive`
     Archive_Menu_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/bottom_menu_archive"]`
     Delete_Menu_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/bottom_menu_delete"]`
     Color_Menu_Selector = `//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/bottom_menu_color"]`
@@ -11,6 +12,9 @@ export class BottomBar {
 
     async clickArchiveMenu() {
         await $(this.Archive_Menu_Selector).click()
+    }
+    async clickUnArchiveMenu() {
+        await $(this.UnArchive_Menu_Selector).click()
     }
     async clickDeleteMenu() {
         await $(this.Delete_Menu_Selector).click()
